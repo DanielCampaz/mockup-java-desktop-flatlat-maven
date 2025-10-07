@@ -1,42 +1,21 @@
 package org.example;
 
 import org.example.components.ChangeThemePanel;
+import org.example.components.LoginFrame;
 import org.example.themes.CustomTheme_Dark;
 
 import javax.swing.*;
 import java.awt.*;
 
-public class Main extends JFrame {
-    static int WIDTH = 500;
-    static int HEIGHT = 500;
-
-    public Main() {
-        super();
-        init();
-    }
-
-    public Main(String title) {
-        super(title);
-        init();
-    }
-
-    public void init() {
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(new Dimension(Main.WIDTH, Main.HEIGHT));
-
-        initComponents();
-
-        setVisible(true);
-    }
-
-    public void initComponents() {
-        add(new ChangeThemePanel());
-    }
-
+public class Main {
     public static void main(String[] args) {
+        // Launch the book editor form
         CustomTheme_Dark.setup();
-
-        Main application = new Main("Example Application");
-
+        SwingUtilities.invokeLater(new Runnable() {
+            public void run() {
+                LoginFrame loginFrame = new LoginFrame();
+                loginFrame.open();
+            }
+        });
     }
 }
